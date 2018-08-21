@@ -1,0 +1,11 @@
+FROM java:openjdk-8-jdk-alpine
+
+MAINTAINER timzaak<zsy.evan@gmail.com>
+
+ADD proxy-client-0.1 /proxy-client
+
+RUN  apk add --no-cache bash && chmod a+x /proxy-client/bin/startup.sh && chmod a+x /proxy-client/bin/stop.sh
+
+WORKDIR /proxy-client
+
+ENTRYPOINT ["./bin/startup.sh"]
